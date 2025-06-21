@@ -3187,3 +3187,413 @@ nav.scrolled {
         font-size: 0.9rem;
     }
 }
+
+/* Payment Section */
+.payment {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.payment::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.3;
+    animation: paymentPulse 4s ease-in-out infinite;
+}
+
+@keyframes paymentPulse {
+    0%, 100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.payment-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 2;
+}
+
+.payment-header h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.payment-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #ffd700, #ff69b4);
+    border-radius: 2px;
+    animation: paymentUnderline 2s ease-in-out infinite;
+}
+
+@keyframes paymentUnderline {
+    0%, 100% {
+        width: 80px;
+    }
+
+    50% {
+        width: 120px;
+    }
+}
+
+.payment-header p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.payment-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.payment-methods-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.payment-method-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.payment-method-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.5s ease;
+}
+
+.payment-method-card:hover::before {
+    left: 100%;
+}
+
+.payment-method-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.payment-method-card i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.payment-method-card:nth-child(1) i {
+    color: #1a1f71;
+}
+
+.payment-method-card:nth-child(2) i {
+    color: #eb001b;
+}
+
+.payment-method-card:nth-child(3) i {
+    color: #006fcf;
+}
+
+.payment-method-card:nth-child(4) i {
+    color: #003087;
+}
+
+.payment-method-card:hover i {
+    transform: scale(1.2) rotate(5deg);
+}
+
+.payment-method-card h3 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.payment-method-card p {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.payment-security {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.security-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.security-feature {
+    text-align: center;
+    color: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.security-feature::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.security-feature:hover::before {
+    transform: translateX(100%);
+}
+
+.security-feature:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.security-feature i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+    color: #ffd700;
+    transition: all 0.3s ease;
+}
+
+.security-feature:hover i {
+    transform: scale(1.1) rotate(10deg);
+    color: #ff69b4;
+}
+
+.security-feature h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.security-feature p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    line-height: 1.5;
+}
+
+.payment-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.payment-info .info-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.payment-info .info-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #ffd700, #ff69b4, #4a90e2);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.payment-info .info-card:hover::after {
+    transform: scaleX(1);
+}
+
+.payment-info .info-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.payment-info .info-card i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+    background: linear-gradient(45deg, #ffd700, #ff69b4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: all 0.3s ease;
+}
+
+.payment-info .info-card:hover i {
+    transform: scale(1.1);
+}
+
+.payment-info .info-card h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.payment-info .info-card p {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Responsive Design for Payment Section */
+@media (max-width: 900px) {
+    .payment {
+        padding: 3rem 1.5rem;
+    }
+
+    .payment-header h2 {
+        font-size: 2rem;
+    }
+
+    .payment-methods-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .security-features {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .payment-info {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .payment {
+        padding: 2rem 1rem;
+    }
+
+    .payment-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .payment-header p {
+        font-size: 1rem;
+    }
+
+    .payment-method-card {
+        padding: 1.5rem;
+    }
+
+    .payment-method-card i {
+        font-size: 2.5rem;
+    }
+
+    .payment-security {
+        padding: 2rem 1.5rem;
+    }
+
+    .security-feature {
+        padding: 1rem;
+    }
+
+    .security-feature i {
+        font-size: 2rem;
+    }
+
+    .payment-info .info-card {
+        padding: 1.5rem;
+    }
+
+    .payment-info .info-card i {
+        font-size: 2rem;
+    }
+}
+
+/* Dark Mode Support for Payment Section */
+body.dark-mode .payment {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+}
+
+body.dark-mode .payment-method-card {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+body.dark-mode .payment-method-card h3 {
+    color: white;
+}
+
+body.dark-mode .payment-method-card p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+body.dark-mode .payment-info .info-card {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+body.dark-mode .payment-info .info-card h3 {
+    color: white;
+}
+
+body.dark-mode .payment-info .info-card p {
+    color: rgba(255, 255, 255, 0.8);
+}
