@@ -896,7 +896,7 @@ nav.scrolled {
     background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: gradient-shift 6s ease infinite;
+    animation: gradient-shift 5s ease infinite;
     margin-bottom: 1rem;
     letter-spacing: 2px;
     position: relative;
@@ -976,10 +976,13 @@ nav.scrolled {
 }
 
 .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 3rem;
-    max-width: 1400px;
+    max-width: 100%;
+    width: 100%;
     margin: 0 auto;
     padding: 0 2rem;
     position: relative;
@@ -987,7 +990,10 @@ nav.scrolled {
 }
 
 .feature-card {
-    background: rgba(255, 255, 255, 0.9);
+    max-width: 400px;
+    width: 100%;
+    height: 100%;
+    background: var(--background-color);
     backdrop-filter: blur(20px);
     border-radius: 30px;
     padding: 3rem 2.5rem;
@@ -1002,7 +1008,7 @@ nav.scrolled {
     opacity: 0;
     transform: translateY(50px) scale(0.9) rotateX(10deg);
     cursor: pointer;
-    perspective: 1000px;
+    /* perspective: 1000px; */
 }
 
 .feature-card::before {
@@ -1054,7 +1060,7 @@ nav.scrolled {
         0 30px 60px rgba(var(--primary-rgb), 0.2),
         0 0 0 1px rgba(255, 255, 255, 0.4) inset;
     border-color: var(--primary-color);
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--background-color);
 }
 
 .feature-icon {
