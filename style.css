@@ -1321,13 +1321,18 @@ nav.scrolled {
 
 /* Contact Section */
 .contact {
-    padding: 8rem 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    display: flex;
+    max-width: 100%;
+    width: 100%;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    padding: min(2rem, 20%) 1rem;
+    background: var(--background-color);
+    /* background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); */
     position: relative;
     overflow: hidden;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+    
 }
 
 .contact::before {
@@ -1412,9 +1417,9 @@ nav.scrolled {
 }
 
 .contact-header h2 {
-    font-size: 4rem;
+    font-size: clamp(2rem, 5vw, 4rem);
     font-weight: 800;
-    background: linear-gradient(135deg, #ffffff, #f0f8ff, #ffffff);
+    background: linear-gradient(135deg, #f63e3e, #2d98f5, #ffffff);
     background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -1471,7 +1476,7 @@ nav.scrolled {
     width: 150px;
     height: 6px;
     border-radius: 3px;
-    background: linear-gradient(90deg, #ffffff, #f0f8ff, #ffffff);
+    background: linear-gradient(135deg, #f63e3e, #2d98f5, #ffffff);
     opacity: 0.8;
     animation: contactPulseWidth 4s ease-in-out infinite;
     box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
@@ -1489,7 +1494,7 @@ nav.scrolled {
 
 .contact-header p {
     font-size: 1.5rem;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--text-color);
     max-width: 700px;
     margin: 0 auto;
     line-height: 1.7;
@@ -3356,9 +3361,8 @@ body.dark-mode .app-link:hover {
 }
 
 .cart-container {
-    display: grid;
-    grid-template-columns: 1.8fr 1fr;
-    gap: 3rem;
+    display: flex;
+    gap: 1rem;
     background: var(--background-color);
     backdrop-filter: blur(20px);
     border-radius: 30px;
