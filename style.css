@@ -806,7 +806,7 @@ nav.scrolled {
     padding: min(8rem, 20%) 1rem;
     width: 100%;
     max-width: 100%;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    /* background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); */
     position: relative;
     overflow: hidden;
 }
