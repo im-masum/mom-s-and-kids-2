@@ -2990,7 +2990,7 @@ body.dark-mode .app-link:hover {
 }
 
 .value-item i {
-    color: #ff69b4;
+    color: var(--accent-color);
     font-size: 1.6rem;
     margin-bottom: 0.5rem;
 }
@@ -3080,39 +3080,10 @@ body.dark-mode .app-link:hover {
     transform: translateY(-4px) scale(1.03);
 }
 
-.flip-card-inner {
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-style: preserve-3d;
-    position: relative;
-}
-
-.team-member:hover .flip-card-inner, .team-member:focus .flip-card-inner {
-    transform: rotateY(180deg);
-}
-
-.flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.flip-card-back {
-    transform: rotateY(180deg);
-    background: #eaf6ff;
-    border-radius: 16px;
-    padding: 1rem;
-}
 
 .member-image img {
-    width: 70px;
-    height: 70px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 0.7rem;
