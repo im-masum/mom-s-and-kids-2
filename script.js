@@ -463,104 +463,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // ... existing DOMContentLoaded code ...
 });
 
-// Navigation functionality
-document.addEventListener("DOMContentLoaded", function () {
-  const nav = document.querySelector("nav");
-  const menuToggle = document.querySelector(".menu-toggle");
-  const navLinks = document.querySelector(".nav-links");
-  const dropdownContainers = document.querySelectorAll(".dropdown-container");
-  const body = document.body;
-
-  // Scroll effect for navigation
-  let lastScroll = 0;
-  window.addEventListener("scroll", () => {
-    const currentScroll = window.pageYOffset;
-
-    // Add/remove scrolled class for glass effect
-    if (currentScroll > 50) {
-      nav.classList.add("scrolled");
-    } else {
-      nav.classList.remove("scrolled");
-    }
-
-    lastScroll = currentScroll;
-  });
-
-  // Mobile menu toggle
-  menuToggle.addEventListener("click", () => {
-    menuToggle.classList.toggle("active");
-    navLinks.classList.toggle("show");
-    body.classList.toggle("nav-open");
-  });
-
-  // Close mobile menu when clicking outside
-  document.addEventListener("click", (e) => {
-    if (!nav.contains(e.target) && navLinks.classList.contains("show")) {
-      menuToggle.classList.remove("active");
-      navLinks.classList.remove("show");
-      body.classList.remove("nav-open");
-    }
-  });
-
-  // Handle dropdowns in mobile view
-  dropdownContainers.forEach((container) => {
-    const link = container.querySelector(".nav-link");
-    const dropdown = container.querySelector(".dropdown");
-
-    link.addEventListener("click", (e) => {
-      if (window.innerWidth <= 768) {
-        e.preventDefault();
-        dropdown.classList.toggle("show");
-
-        // Close other dropdowns
-        dropdownContainers.forEach((otherContainer) => {
-          if (otherContainer !== container) {
-            otherContainer.querySelector(".dropdown").classList.remove("show");
-          }
-        });
-      }
-    });
-  });
-
-  // Close mobile menu on window resize
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 768) {
-      menuToggle.classList.remove("active");
-      navLinks.classList.remove("show");
-      body.classList.remove("nav-open");
-
-      // Close all dropdowns
-      document.querySelectorAll(".dropdown").forEach((dropdown) => {
-        dropdown.classList.remove("show");
-      });
-    }
-  });
-
-  // Active link highlighting
-  const sections = document.querySelectorAll("section[id]");
-  window.addEventListener("scroll", () => {
-    const scrollY = window.pageYOffset;
-
-    sections.forEach((section) => {
-      const sectionHeight = section.offsetHeight;
-      const sectionTop = section.offsetTop - 100;
-      const sectionId = section.getAttribute("id");
-      const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
-
-      if (
-        navLink &&
-        scrollY > sectionTop &&
-        scrollY <= sectionTop + sectionHeight
-      ) {
-        document.querySelectorAll(".nav-link").forEach((link) => {
-          link.classList.remove("active");
-        });
-        navLink.classList.add("active");
-      }
-    });
-  });
-});
-
 // Add new keyframe animations
 const styleSheet = document.createElement("style");
 styleSheet.textContent = `
@@ -886,7 +788,6 @@ function initAboutSection() {
     );
     achievementNumbers.forEach((num) => countObserver.observe(num));
   }
-
 
   // Mini-nav active link on scroll
   const navLinks = document.querySelectorAll(".about-mini-nav a");
@@ -1420,4 +1321,60 @@ document.head.appendChild(contactStyles);
 // Initialize contact section when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
   initContactSection();
+});
+
+// =============================
+// NAVIGATION (RESPONSIVE NAV/FLEX)
+// =============================
+// Handles responsive navigation menu, hamburger toggle, dropdowns, and accessibility
+// Uses flexbox for layout (CSS handles most responsiveness)
+//
+// The main function is initMenuToggle(), which is called on DOMContentLoaded.
+//
+// If you want to customize navigation behavior, edit the code below.
+
+// --- Scrollspy: Highlight active nav link on scroll ---
+document.addEventListener("DOMContentLoaded", function () {
+  const navLinks = document.querySelectorAll(".nav-link[href^='#']");
+  const sections = Array.from(document.querySelectorAll("section[id]"));
+
+  // Remove 'active' from all nav links
+  function clearActiveLinks() {
+    navLinks.forEach((link) => link.classList.remove("active"));
+  }
+
+  // Set active nav link by section id
+  function setActiveLink(sectionId) {
+    clearActiveLinks();
+    const activeLink = document.querySelector(
+      `.nav-link[href='#${sectionId}']`
+    );
+    if (activeLink) activeLink.classList.add("active");
+  }
+
+  // Intersection Observer for scrollspy
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveLink(entry.target.id);
+        }
+      });
+    },
+    {
+      threshold: 0.5,
+    }
+  );
+
+  sections.forEach((section) => {
+    observer.observe(section);
+  });
+
+  // Also update active link on click (for instant feedback)
+  navLinks.forEach((link) => {
+    link.addEventListener("click", function () {
+      clearActiveLinks();
+      this.classList.add("active");
+    });
+  });
 });
