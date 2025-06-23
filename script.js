@@ -887,18 +887,6 @@ function initAboutSection() {
     achievementNumbers.forEach((num) => countObserver.observe(num));
   }
 
-  // Flip card accessibility: flip on Enter/Space
-  document.querySelectorAll(".flip-card").forEach((card) => {
-    card.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        card.classList.toggle("flipped");
-      }
-    });
-    card.addEventListener("blur", () => {
-      card.classList.remove("flipped");
-    });
-  });
 
   // Mini-nav active link on scroll
   const navLinks = document.querySelectorAll(".about-mini-nav a");

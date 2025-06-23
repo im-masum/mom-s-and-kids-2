@@ -3120,18 +3120,7 @@ body.dark-mode .app-link:hover {
 }
 
 .meet-btn:hover {
-    background: #ff69b4;
-}
-
-.team-quote {
-    font-style: italic;
-    color: #ff69b4;
-    margin-bottom: 0.5rem;
-}
-
-.team-bio {
-    color: #4a90e2;
-    font-size: 0.98rem;
+    background: var(--accent-color);
 }
 
 .about-achievements {
