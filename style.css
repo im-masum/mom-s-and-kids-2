@@ -523,6 +523,8 @@ nav.scrolled {
     justify-content: center;
     flex-wrap: wrap;
     border-radius: 10px;
+    background: var(--background-color);
+    padding: min(4rem, 20%) 2rem;
 }
 
 .hero-content {
@@ -534,6 +536,7 @@ nav.scrolled {
     justify-content: center;
     flex: 1 1 500px;
     flex-wrap: wrap;
+    padding: min(8rem, 16%) 1rem;
 }
 
 .hero-text {
@@ -612,6 +615,7 @@ nav.scrolled {
     position: relative;
     overflow: hidden;
     cursor: pointer;
+    background: var(--accent-color);
 }
 
 .cta-btn:hover {
@@ -624,7 +628,7 @@ nav.scrolled {
             #ff8dc7);
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: var(--accent-color);
     animation: gradient-shift 8s ease infinite;
     text-shadow: 0 4px 15px rgba(var(--primary-rgb), 0.3);
     color: white;
@@ -5220,4 +5224,27 @@ body.dark-mode .payment-info .info-card p {
         padding: 0.5rem;
         margin-bottom: 0.5rem;
     }
+}
+
+body.dark-mode .hero {
+    background: linear-gradient(120deg, #23243a 0%, #2d2e4a 100%);
+    box-shadow: 0 8px 40px rgba(40, 62, 86, 0.18), 0 1.5px 8px rgba(74, 144, 226, 0.10);
+    border: 1.5px solid rgba(74, 144, 226, 0.18);
+}
+
+body.dark-mode .hero-feature {
+    background: rgba(40, 62, 86, 0.55);
+    box-shadow: 0 4px 24px rgba(74, 144, 226, 0.13), 0 1.5px 8px rgba(255, 105, 180, 0.07);
+    border: 1.5px solid rgba(74, 144, 226, 0.18);
+    color: #f0f8ff;
+}
+
+body.dark-mode .hero-text h1,
+body.dark-mode .hero-text h1::after {
+    text-shadow: 0 2px 24px rgba(74, 144, 226, 0.18), 0 1px 0 #23243a;
+}
+
+body.dark-mode .hero-subtitle {
+    color: #ff8dc7;
+    border-right-color: #ff8dc7;
 }
