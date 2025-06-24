@@ -367,4 +367,116 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
+
+  // NAV IMPROVEMENTS
+  // 1. Sticky, auto-hiding nav on scroll direction
+  let lastScrollY = window.scrollY;
+  let navHidden = false;
+  function handleNavAutoHide() {
+    const currentY = window.scrollY;
+    if (currentY > lastScrollY && currentY > 80 && !navHidden) {
+      nav.classList.add("nav-hidden");
+      navHidden = true;
+    } else if (currentY < lastScrollY && navHidden) {
+      nav.classList.remove("nav-hidden");
+      navHidden = false;
+    }
+    lastScrollY = currentY;
+  }
+  window.addEventListener("scroll", handleNavAutoHide);
+
+  // 2. Animated underline for active nav link
+  let underline = document.createElement("div");
+  underline.className = "nav-underline";
+  document.body.appendChild(underline);
+  function moveUnderlineTo(link) {
+    if (!link) return (underline.style.opacity = 0);
+    const rect = link.getBoundingClientRect();
+    underline.style.opacity = 1;
+    underline.style.position = "fixed";
+    underline.style.left = rect.left + "px";
+    underline.style.top = rect.bottom - 2 + "px";
+    underline.style.width = rect.width + "px";
+    underline.style.height = "3px";
+    underline.style.background =
+      "linear-gradient(90deg, #fd5c06, #ff69b4, #4a90e2)";
+    underline.style.borderRadius = "2px";
+    underline.style.transition = "all 0.3s cubic-bezier(0.4,0,0.2,1)";
+    underline.style.zIndex = 2000;
+    underline.style.pointerEvents = "none";
+  }
+  function updateUnderline() {
+    const active = document.querySelector(".nav-link.active");
+    moveUnderlineTo(active);
+  }
+  updateUnderline();
+  window.addEventListener("resize", updateUnderline);
+  document.addEventListener("scroll", updateUnderline, true);
+  document.querySelectorAll(".nav-link").forEach((link) => {
+    link.addEventListener("mouseenter", function () {
+      moveUnderlineTo(this);
+    });
+    link.addEventListener("mouseleave", updateUnderline);
+    link.addEventListener("focus", function () {
+      moveUnderlineTo(this);
+    });
+    link.addEventListener("blur", updateUnderline);
+  });
+  // Update underline on nav link click
+  document.querySelectorAll(".nav-link").forEach((link) => {
+    link.addEventListener("click", updateUnderline);
+  });
+
+  // 3. Dropdown keyboard navigation
+  if (dropdownContainer && dropdownMenu) {
+    const dropdownLinks = dropdownMenu.querySelectorAll("a");
+    dropdownContainer.setAttribute("tabindex", "0");
+    dropdownContainer.setAttribute("aria-haspopup", "true");
+    dropdownContainer.setAttribute("aria-expanded", "false");
+    dropdownContainer.setAttribute("role", "menuitem");
+    dropdownMenu.setAttribute("role", "menu");
+    dropdownLinks.forEach((link) => link.setAttribute("role", "menuitem"));
+    dropdownContainer.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        dropdownMenu.classList.add("show");
+        dropdownLinks[0].focus();
+      }
+    });
+    dropdownLinks.forEach((link, idx) => {
+      link.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowDown") {
+          e.preventDefault();
+          if (idx < dropdownLinks.length - 1) dropdownLinks[idx + 1].focus();
+        } else if (e.key === "ArrowUp") {
+          e.preventDefault();
+          if (idx > 0) dropdownLinks[idx - 1].focus();
+          else dropdownContainer.focus();
+        } else if (e.key === "Escape") {
+          dropdownMenu.classList.remove("show");
+          dropdownContainer.focus();
+        }
+      });
+    });
+    dropdownMenu.addEventListener("mouseleave", function () {
+      dropdownMenu.classList.remove("show");
+      dropdownContainer.setAttribute("aria-expanded", "false");
+    });
+    dropdownContainer.addEventListener("mouseenter", function () {
+      dropdownMenu.classList.add("show");
+      dropdownContainer.setAttribute("aria-expanded", "true");
+    });
+    dropdownContainer.addEventListener("mouseleave", function () {
+      dropdownMenu.classList.remove("show");
+      dropdownContainer.setAttribute("aria-expanded", "false");
+    });
+  }
+
+  // 4. ARIA attributes for nav accessibility
+  nav.setAttribute("role", "navigation");
+  nav.setAttribute("aria-label", "Main Navigation");
+  document.querySelectorAll(".nav-link").forEach((link) => {
+    link.setAttribute("tabindex", "0");
+    link.setAttribute("role", "menuitem");
+  });
 });
