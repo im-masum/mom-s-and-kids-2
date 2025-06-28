@@ -2677,6 +2677,13 @@ body.dark-mode .app-link:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    max-width: 90%;
+    padding: min(4rem, 32%) 2rem;
+    background: var(--light-background);
+    margin-top: 50px;
+    border-radius: 20px;
+    
 }
 
 .about-content {
@@ -2808,6 +2815,7 @@ body.dark-mode .app-link:hover {
     margin-top: 2.5rem;
     margin-bottom: 0.7rem;
     position: relative;
+    padding: min(1rem, 8%) 1rem;
 }
 
 
@@ -3016,11 +3024,14 @@ body.dark-mode .app-link:hover {
 
 .about-achievements {
     display: flex;
+    align-items: center;
+    justify-content: center;
     max-width: 1200px;
     width: 100%;
     gap: 2rem;
     flex-wrap: wrap;
     justify-content: space-around;
+    padding: min(4rem, 8%) 2rem;
 }
 
 .achievement-item {
@@ -3029,8 +3040,8 @@ body.dark-mode .app-link:hover {
     box-shadow: 0 2px 12px #ffd70022;
     padding: 1.1rem 1.2rem;
     flex: 1 1 200px;
-    min-width: 150px;
-    max-width: 200px;
+    min-width: 200px;
+    max-width: 250px;
     display: flex;
     flex-direction: column;
     align-items: center;
