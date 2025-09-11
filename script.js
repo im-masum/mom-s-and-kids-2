@@ -116,16 +116,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Nav scroll effect
-  const nav = document.querySelector("nav");
-  window.addEventListener("scroll", function () {
-    if (window.scrollY > 30) {
-      nav.classList.add("scrolled");
-    } else {
-      nav.classList.remove("scrolled");
-    }
-  });
-
   // Auto-highlight nav links based on scroll position
   const sectionIds = Array.from(navLinkEls)
     .map((link) => link.getAttribute("href"))
