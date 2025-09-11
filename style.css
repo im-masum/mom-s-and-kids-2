@@ -112,6 +112,7 @@ nav.scrolled {
 }
 
 .nav-link {
+
     text-decoration: none;
     color: var(--text-color);
     font-weight: 700;
@@ -120,6 +121,8 @@ nav.scrolled {
     border-radius: 4px;
     transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
+    z-index: 1;
+
 }
 
 .nav-link:hover,
@@ -427,9 +430,11 @@ nav.scrolled {
         display: block;
         font-size: 1.25rem;
         padding: 1rem;
-        width: 100%;
+        /* width: 100%; */
         border-radius: 12px;
         transition: all 0.3s ease;
+
+
     }
 
     .nav-link:hover,
