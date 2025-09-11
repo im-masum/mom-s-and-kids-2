@@ -14275,7 +14275,7 @@ body.dark-mode .app-link:hover {
 
 /* --- TESTIMONIALS SECTION IMPROVEMENTS --- */
 .testimonials {
-    background: linear-gradient(135deg, #fff8fc 0%, #f0f8ff 100%);
+    background: b;
     border-radius: 24px;
     box-shadow: 0 4px 32px rgba(255, 105, 180, 0.07);
     padding: 5rem 1.5rem 6rem 1.5rem;
@@ -14283,6 +14283,117 @@ body.dark-mode .app-link:hover {
     position: relative;
     overflow: hidden;
 }
+
+
+/* --- Decorative Background for Testimonials --- */
+.testimonials::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    left: -80px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, #ffd70033 0%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+    border-radius: 50%;
+    filter: blur(8px);
+}
+
+.testimonials::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    right: -60px;
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle, #ff69b433 0%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+    border-radius: 50%;
+    filter: blur(8px);
+}
+
+/* --- Animated Card Entrance --- */
+.testimonial-card {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+    animation: testimonialFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: calc(var(--testimonial-index, 0) * 0.15s);
+}
+
+@keyframes testimonialFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* --- Quote Icon in Card --- */
+.testimonial-card::before {
+    content: '\\201C';
+    position: absolute;
+    top: 1.2rem;
+    left: 1.2rem;
+    font-size: 3.5rem;
+    color: #ffd70022;
+    z-index: 1;
+    pointer-events: none;
+    font-family: serif;
+    line-height: 1;
+}
+
+/* --- Featured Testimonial --- */
+.testimonial-card:first-child {
+    border: 2.5px solid #ffd700;
+    box-shadow: 0 8px 40px #ffd70022, 0 2px 12px #ff69b433;
+    background: linear-gradient(120deg, #fffbe6 0%, #fff 100%);
+    transform: scale(1.04);
+    z-index: 2;
+}
+
+/* --- Animate Stars on Hover --- */
+.testimonial-card:hover .rating i,
+.testimonial-card:focus-within .rating i {
+    animation: starPulse 0.5s alternate infinite;
+}
+
+@keyframes starPulse {
+    0% {
+        filter: drop-shadow(0 0 0 #ffd700);
+    }
+
+    100% {
+        filter: drop-shadow(0 0 8px #ffd700);
+    }
+}
+
+/* --- Carousel for Mobile (show one at a time, scrollable) --- */
+@media (max-width: 600px) {
+    .testimonials-container {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 1.2rem;
+        padding-bottom: 1rem;
+    }
+
+    .testimonial-card {
+
+        max-width: 100%;
+        width: 100%;
+        scroll-snap-align: center;
+        margin: 0 auto;
+    }
+}
+
+/* --- Focus Accessibility --- */
+.testimonial-card:focus-within {
+    outline: 3px solid #ffd700;
+    outline-offset: 2px;
+    z-index: 3;
+}
+
 
 .testimonials-header h2 {
     font-size: 2.3rem;
