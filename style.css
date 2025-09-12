@@ -719,7 +719,7 @@ nav {
     display: inline-block;
     background: linear-gradient(45deg,
             var(--primary-color),
-            #ff8dc7);
+            #42132b);
     -webkit-background-clip: text;
     -webkit-text-fill-color: text-color;
     transform: translateZ(30px);
@@ -3141,7 +3141,7 @@ body.dark-mode .app-link:hover {
     }
 
     100% {
-        box-shadow: 0 0 18px #ff69b488;
+        box-shadow: 0 0 18px #69113d88;
     }
 }
 
