@@ -48,9 +48,9 @@ body {
     background-color: var(--background-color);
 }
 
-/* Navigation */
+/*==== Navigation start===== */
 nav {
-    display: inline-flex;
+    display: flex;
     position: sticky;
     top: 0;
     left: 0;
@@ -368,7 +368,7 @@ nav {
 
     }
 
-    .nav-links.open {
+    .nav-links.show {
         opacity: 1;
         visibility: visible;
         transform: scale(1);
@@ -3838,196 +3838,6 @@ body.dark-mode .cart-header {
     }
 }
 
-/* Mobile Navigation */
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .nav-links {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        width: 100vw;
-        height: 100vh;
-        background-color: var(--background-color);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        opacity: 0;
-        visibility: hidden;
-        transform: scale(0.95);
-        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    }
-
-    .nav-links.show {
-        opacity: 1;
-        visibility: visible;
-        transform: scale(1);
-    }
-
-    .nav-links ul {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 2rem;
-        padding: min(1rem, 8%) .5rem;
-        width: 100%;
-        max-width: 400px;
-        background-color: var(--background-color);
-        border-radius: 12px;
-        box-shadow: var(--shadow);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        margin: 0 auto;
-        position: relative;
-        z-index: 1001;
-    }
-
-    .nav-links li {
-        width: 100%;
-        text-align: center;
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    .nav-links.show li {
-        animation: slideUpFade 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-    }
-
-    .nav-links.show li:nth-child(1) {
-        animation-delay: 0.1s;
-    }
-
-    .nav-links.show li:nth-child(2) {
-        animation-delay: 0.2s;
-    }
-
-    .nav-links.show li:nth-child(3) {
-        animation-delay: 0.3s;
-    }
-
-    .nav-links.show li:nth-child(4) {
-        animation-delay: 0.4s;
-    }
-
-    .nav-links.show li:nth-child(5) {
-        animation-delay: 0.5s;
-    }
-
-    .nav-link {
-        display: block;
-        font-size: 1.25rem;
-        padding: 1rem;
-        width: 100%;
-        border-radius: 12px;
-        transition: all 0.3s ease;
-    }
-
-    .nav-link:hover,
-    .nav-link.active {
-        background-color: rgba(255, 105, 180, 0.1);
-        transform: translateX(5px);
-    }
-
-    .dropdown {
-        position: static;
-        width: 100%;
-        background: none;
-        box-shadow: none;
-        padding: 0.5rem 0;
-        margin-top: 0.5rem;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-10px);
-        transition: all 0.3s ease;
-    }
-
-    .dropdown.show {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-    }
-
-    .dropdown a {
-        padding: 0.8rem;
-        font-size: 1.1rem;
-        color: var(--text-color);
-        opacity: 0.9;
-        border-radius: 8px;
-    }
-
-    .dropdown a:hover {
-        background-color: rgba(255, 105, 180, 0.1);
-        color: var(--primary-color);
-        transform: translateX(5px);
-    }
-
-    body.nav-open {
-        overflow: hidden;
-        padding-right: var(--scrollbar-width, 0px);
-    }
-}
-
-/* Small screens */
-@media (max-width: 480px) {
-    .nav-container {
-        padding: 0.8rem;
-    }
-
-    .logo-text {
-        font-size: 1.2rem;
-    }
-
-    .nav-actions {
-        gap: 1rem;
-    }
-
-    .cart-icon,
-    .dark-toggle {
-        padding: 0.4rem;
-    }
-
-    .nav-links ul {
-        gap: 1.5rem;
-    }
-
-    .menu-toggle {
-        width: 40px;
-        height: 40px;
-        padding: 6px;
-    }
-
-    .menu-icon,
-    .menu-icon::before,
-    .menu-icon::after {
-        width: 24px;
-    }
-
-    .menu-icon::before {
-        width: 16px;
-    }
-
-    .menu-icon::after {
-        width: 20px;
-    }
-
-    .nav-link {
-        font-size: 1.1rem;
-        padding: 0.8rem;
-    }
-
-    .dropdown a {
-        font-size: 1rem;
-        padding: 0.6rem;
-    }
-}
 
 /* Hero Section Flat Style */
 .hero {
