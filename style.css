@@ -41,7 +41,7 @@ body {
     justify-content: center;
     width: 100%;
     max-width: 100%;
-    padding: min(1rem, 10%) 1rem;
+    padding: min(1rem, 8%) 1rem;
     overflow: auto;
     line-height: 1.6;
     color: var(--text-color);
@@ -50,6 +50,7 @@ body {
 
 /* Navigation */
 nav {
+    display: inline-flex;
     position: sticky;
     top: 0;
     left: 0;
@@ -69,7 +70,7 @@ nav {
     max-width: 100%;
     width: 100%;
     margin: 0 auto;
-    padding: 1rem;
+    padding: min(1rem, 10%) 1rem;
     justify-content: space-between;
     align-items: center;
     position: relative;
@@ -346,42 +347,43 @@ nav {
         align-items: center;
         justify-content: center;
     }
-    
     .nav-links {
-        position: sticky;
+        position: fixed;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        width: 100vw;
-        height: 100vh;
-        background-color: var(--background-color);
+        background-color: rgba(0, 0, 0, 0.6);
         backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        display: flex;
+        display: none;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
+        padding: 2rem;
         opacity: 0;
         visibility: hidden;
         transform: scale(0.95);
-        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        transition: all 0.3s ease;
+        z-index: 1000;
+
     }
 
-    .nav-links.show {
+    .nav-links.open {
         opacity: 1;
         visibility: visible;
         transform: scale(1);
+        display: flex;
     }
 
     .nav-links ul {
-        display: flex;
+        display: block;
         flex-direction: column;
         align-items: center;
         gap: 2rem;
         padding: min(1rem, 8%) .5rem;
         width: 100%;
         max-width: 400px;
-        /* background-color: var(--background-color); */
+        background-color: var(--background-color);
         color: var(--text-color);
         border-radius: 12px;
         box-shadow: var(--shadow);
@@ -390,13 +392,17 @@ nav {
         margin: 0 auto;
         position: relative;
         z-index: 1001;
+        
     }
-
+    
     .nav-links li {
+        display: block;
+        padding: 1rem 0;
         width: 100%;
         text-align: center;
         opacity: 0;
         transform: translateY(20px);
+
     }
 
     .nav-links.show li {
@@ -430,7 +436,11 @@ nav {
         width: 100%;
         border-radius: 12px;
         transition: all 0.3s ease;
-
+        text-align: center;
+        font-weight: 600;
+        letter-spacing: 1px;
+        color: var(--text-color);
+        background: var(--light-background);
 
     }
 
