@@ -10056,10 +10056,14 @@ body.dark-mode .cart-header {
 
 .contact-container {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
     gap: 2rem;
     justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px;
+    position: relative;
+    z-index: 2;
 }
 
 .contact-info {
@@ -10238,7 +10242,7 @@ body.dark-mode .cart-header {
 
 .contact-form:hover::after {
     transform: scaleX(1);
-}
+} 
 
 .contact-form:hover {
     transform: translateY(-5px) scale(1.02);
