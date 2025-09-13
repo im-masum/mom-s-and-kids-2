@@ -10201,6 +10201,11 @@ body.dark-mode .cart-header {
     overflow: hidden;
     opacity: 0;
     transform: translateY(40px) scale(0.9);
+    cursor: pointer;
+    perspective: 1000px;
+    z-index: 1;
+    animation: contactFormEntrance 1s ease-out 0.5s both;
+    
 }
 
 .contact-form::before {
@@ -12355,10 +12360,10 @@ body.dark-mode .app-link:hover {
 
 .payment-methods-grid {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
     gap: 1.5rem;
     justify-content: center;
+    align-items: stretch;
 }
 
 .payment-method-card {
