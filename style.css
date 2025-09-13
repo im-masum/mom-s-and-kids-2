@@ -10204,8 +10204,8 @@ body.dark-mode .cart-header {
     cursor: pointer;
     perspective: 1000px;
     z-index: 1;
-    animation: contactFormEntrance 1s ease-out 0.5s both;
-    
+    animation: contactFormEntrance 5s ease-out 5.5s both;
+
 }
 
 .contact-form::before {
@@ -10216,7 +10216,7 @@ body.dark-mode .cart-header {
     width: 100%;
     height: 100%;
     background: linear-gradient(135deg, #f63e3e, #2d98f5, #ffffff);
-    transition: left 0.8s ease;
+    transition: left 1.8s ease;
 }
 
 .contact-form:hover::before {
