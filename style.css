@@ -10188,7 +10188,7 @@ body.dark-mode .cart-header {
 }
 
 .contact-form {
-    flex: 1 1 300px;
+    flex: 1 1 400px;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
