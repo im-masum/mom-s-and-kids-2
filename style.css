@@ -9283,6 +9283,7 @@ body.dark-mode .cart-header {
             var(--primary-color),
             #ff8dc7);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: text-color;
     transform: translateZ(30px);
 }
@@ -9463,6 +9464,7 @@ body.dark-mode .cart-header {
     background: linear-gradient(135deg, var(--primary-color), #ff8dc7, #4a90e2, var(--primary-color));
     background-size: 300% 300%;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: gradient-shift 5s ease infinite;
     margin-bottom: 1rem;
