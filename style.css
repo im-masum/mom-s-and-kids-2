@@ -10067,7 +10067,7 @@ body.dark-mode .cart-header {
 }
 
 .contact-info {
-    flex: 1 1 300px;
+    flex: 1 1 100px;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -10078,7 +10078,7 @@ body.dark-mode .cart-header {
     color: var(--text-color);
     backdrop-filter: blur(20px);
     border-radius: 25px;
-    padding: 2.5rem 2rem;
+    padding: min(2rem, 16%) 1rem;
     text-align: center;
     border: 2px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1),
