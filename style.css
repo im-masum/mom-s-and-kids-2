@@ -585,6 +585,7 @@ nav {
             var(--primary-color) var(--primary-color));
     background-size: 200% 200%;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: var(--primary-color);
     animation: gradient-shift 8s ease infinite;
     margin-bottom: 2rem;
@@ -600,6 +601,7 @@ nav {
             rgba(var(--primary-rgb), 0.2),
             rgba(255, 141, 199, 0.2));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: blur(8px);
 }
@@ -724,6 +726,7 @@ nav {
             var(--primary-color),
             #42132b);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: text-color;
     transform: translateZ(30px);
 }
@@ -1162,6 +1165,7 @@ nav {
     background: linear-gradient(135deg, var(--primary-color), #ff8dc7, #4a90e2, var(--primary-color));
     background-size: 300% 300%;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: gradient-shift 5s ease infinite;
     margin-bottom: 1rem;
@@ -5904,6 +5908,7 @@ nav.scrolled {
             var(--primary-color) var(--primary-color));
     background-size: 200% 200%;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: var(--primary-color);
     animation: gradient-shift 8s ease infinite;
     margin-bottom: 2rem;
@@ -5919,6 +5924,7 @@ nav.scrolled {
             rgba(var(--primary-rgb), 0.2),
             rgba(255, 141, 199, 0.2));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: blur(8px);
 }
@@ -6043,6 +6049,7 @@ nav.scrolled {
             var(--primary-color),
             #ff8dc7);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: text-color;
     transform: translateZ(30px);
 }
