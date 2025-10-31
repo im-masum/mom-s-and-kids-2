@@ -53,41 +53,97 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Mobile menu toggle
   if (menuToggle && navLinks) {
-    menuToggle.addEventListener("click", function (e) {
-      menuToggle.classList.toggle("active");
-      navLinks.classList.toggle("show");
-      body.classList.toggle("nav-open");
-      clearNavActive();
+    function closeMobileMenu() {
+      menuToggle.classList.remove("active");
+      navLinks.classList.remove("show");
+      body.classList.remove("nav-open");
+    }
+
+    function openMobileMenu() {
       menuToggle.classList.add("active");
+      navLinks.classList.add("show");
+      body.classList.add("nav-open");
+    }
+
+    menuToggle.addEventListener("click", function (e) {
+      e.stopPropagation();
+      const isOpen = navLinks.classList.contains("show");
+
+      if (isOpen) {
+        closeMobileMenu();
+      } else {
+        openMobileMenu();
+      }
     });
+
     // Close menu when clicking a link (mobile UX)
     navLinks.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", function () {
-        menuToggle.classList.remove("active");
-        navLinks.classList.remove("show");
-        body.classList.remove("nav-open");
+        closeMobileMenu();
       });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", function (e) {
+      if (
+        navLinks.classList.contains("show") &&
+        !navLinks.contains(e.target) &&
+        !menuToggle.contains(e.target)
+      ) {
+        closeMobileMenu();
+      }
+    });
+
+    // Close menu on Escape key
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && navLinks.classList.contains("show")) {
+        closeMobileMenu();
+      }
+    });
+
+    // Close menu on window resize if resizing to desktop size
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 768 && navLinks.classList.contains("show")) {
+        closeMobileMenu();
+      }
     });
   }
 
   // Dropdown toggle for mobile and keyboard
   if (dropdownContainer && dropdownMenu) {
     const dropdownToggle = dropdownContainer.querySelector(".nav-link");
+
     dropdownToggle.addEventListener("click", function (e) {
       // Only toggle on mobile
       if (window.innerWidth <= 768) {
         e.preventDefault();
+        e.stopPropagation();
         dropdownMenu.classList.toggle("show");
+        dropdownContainer.classList.toggle("mobile-open");
       }
     });
+
     // Keyboard accessibility for dropdown
     dropdownToggle.addEventListener("keydown", function (e) {
       if ((e.key === "Enter" || e.key === " ") && window.innerWidth <= 768) {
         e.preventDefault();
         dropdownMenu.classList.toggle("show");
+        dropdownContainer.classList.toggle("mobile-open");
       }
       if (e.key === "Escape") {
         dropdownMenu.classList.remove("show");
+        dropdownContainer.classList.remove("mobile-open");
+      }
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", function (e) {
+      if (
+        dropdownMenu.classList.contains("show") &&
+        !dropdownContainer.contains(e.target)
+      ) {
+        dropdownMenu.classList.remove("show");
+        dropdownContainer.classList.remove("mobile-open");
       }
     });
   }
