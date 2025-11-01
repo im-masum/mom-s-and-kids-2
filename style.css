@@ -6865,7 +6865,6 @@ body.dark-mode .app-link:hover {
     transition: transform 0.18s, box-shadow 0.18s;
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
     position: relative;
     background: var(--card-background);
 }
