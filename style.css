@@ -6846,9 +6846,14 @@ body.dark-mode .app-link:hover {
 }
 
 .testimonials-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: column;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
     margin: 2.5rem 0 2rem 0;
 }
 
@@ -6862,6 +6867,7 @@ body.dark-mode .app-link:hover {
     flex-direction: column;
     gap: 1.2rem;
     position: relative;
+    background: var(--card-background);
 }
 
 .testimonial-card:hover, .testimonial-card:focus-within {
